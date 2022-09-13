@@ -9,10 +9,5 @@ public class Main {
         ArrayList<SUIT> suits = new ArrayList<>(Arrays.asList(SUIT.HEARTS, SUIT.DIAMONDS));
         ArrayList<RANK> ranks = new ArrayList<>(Arrays.asList(RANK.QUEEN, RANK.TEN));
         Deck deck = new Deck(suits, ranks);
-
-
-        jack.equals(queen);
-        System.out.println(deck.toString());
-        System.out.println(deck.size());
     }
 }
