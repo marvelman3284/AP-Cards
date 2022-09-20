@@ -17,10 +17,7 @@ public class Card {
             case SEVEN -> this.point = 7;
             case EIGHT -> this.point = 8;
             case NINE -> this.point = 9;
-            case TEN -> this.point = 10;
-            case JACK -> this.point = 11;
-            case QUEEN -> this.point = 12;
-            case KING -> this.point = 13;
+            case TEN, JACK, QUEEN, KING -> this.point = 10;
         }
     }
 
@@ -33,6 +30,11 @@ public class Card {
     }
 
     public int getPoint() {
+        return this.point;
+    }
+
+    public int setPoint(int value) {
+        this.point = value;
         return this.point;
     }
 

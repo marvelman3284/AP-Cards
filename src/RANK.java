@@ -1,7 +1,4 @@
 public enum RANK {
-    JACK,
-    QUEEN,
-    KING,
     ACE,
     TWO,
     THREE,
@@ -11,5 +8,8 @@ public enum RANK {
     SEVEN,
     EIGHT,
     NINE,
-    TEN
+    TEN,
+    JACK,
+    QUEEN,
+    KING
 }

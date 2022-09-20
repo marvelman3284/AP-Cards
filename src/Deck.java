@@ -1,6 +1,5 @@
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class Deck {
@@ -15,6 +14,10 @@ public class Deck {
             }
         }
         this.size = cards.size();
+    }
+
+    public Card getCard(int index) {
+        return this.cards.get(index);
     }
 
     public Card deal() {
@@ -35,17 +38,18 @@ public class Deck {
     }
 
     public void perfectShuffle() {
-        ArrayList<Card> shuffled = new ArrayList<>();
+        Card[] shuffled = new Card[this.size];
         int k = 0;
-        for (int i = 0; i < 26; i++) {
-            shuffled.add(k, this.cards.get(i));
+        for (int i = 0; i < (this.size+1)/2; i++) {
+            shuffled[k] = this.cards.get(i);
             k += 2;
         }
         k = 1;
-        for (int i = 26; i < 52; i++) {
-            shuffled.add(k, this.cards.get(i));
+        for (int i = (this.size+1)/2; i < this.size; i++) {
+            shuffled[k] = this.cards.get(i);
+            k += 2;
         }
-        this.cards = shuffled;
+        this.cards = new ArrayList<Card>(Arrays.asList(shuffled));
     }
 
     public int rand(int min, int max) {
@@ -53,9 +57,9 @@ public class Deck {
        return (int)(Math.floor((Math.random() * range) + min));
     }
 
-    public void selectionShuffle() {
+    public void shuffle() {
         for (int i=0; i<this.size; i++) {
-            int card = rand(i, this.size);
+            int card = rand(i, this.size-1);
             Collections.swap(cards, i, card);
         }
     }
