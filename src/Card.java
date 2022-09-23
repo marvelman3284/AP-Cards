@@ -8,7 +8,7 @@ public class Card {
         this.suit = suit;
         this.rank = rank;
         switch (rank) {
-            case ACE -> this.point = 1;
+            case ACE -> this.point = 11;
             case TWO -> this.point = 2;
             case THREE -> this.point = 3;
             case FOUR -> this.point = 4;
