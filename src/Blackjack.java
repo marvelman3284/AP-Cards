@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Blackjack {
@@ -23,7 +24,7 @@ public class Blackjack {
         playerCards.add(deck.deal());
         dealerCards.add(deck.deal());
 
-        System.out.println(String.format("How much would you like to bet? Your total is %s", player.getTotal()));
+        System.out.printf("How much would you like to bet? Your total is %s%n", player.getTotal());
         player.gamble(sc.nextInt());
 
         System.out.println("You are dealt a " + playerCards.get(0).toString());
@@ -41,7 +42,7 @@ public class Blackjack {
         if (playerTotal == 21) {
             System.out.println("You got blackjack!");
             player.win(1.5);
-            System.out.println(String.format("Your new total is %s", player.getTotal()));
+            System.out.printf("Your new total is %s%n", player.getTotal());
             playing = false;
         }
 
@@ -55,9 +56,9 @@ public class Blackjack {
         while (playing) {
 
             System.out.println("Would you like to hit or stand? (h/s): ");
-            char choice = sc.nextLine().charAt(0);
+            char choice = sc.next().charAt(0);
 
-            if (choice == 'h') {
+            if (Objects.equals(choice, 'h')) {
                 playerCards.add(deck.deal());
                 System.out.println("You are dealt a " + playerCards.get(playerCards.size() - 1).toString());
                 System.out.println("Your new total is " + getTotal(playerCards) + "\n");
@@ -71,7 +72,7 @@ public class Blackjack {
                     System.out.println("Your new total is " + getTotal(playerCards) + "\n");
                     playing = false;
                 }
-            } else if (choice == 's') {
+            } else if (Objects.equals(choice, 's')) {
                 System.out.println("The dealers other card was a " + dealerCards.get(1).toString());
                 while (true) {
                     containsAce(dealerCards);
@@ -114,10 +115,8 @@ public class Blackjack {
         }
         System.out.println("Would you like to play again? (y/n)");
 
-        if (sc.nextLine().toLowerCase().charAt(0) == 'y') {
+        if (sc.next().toLowerCase().charAt(0) == 'y') {
             main(player);
-        } else {
-            return;
         }
     }
 
